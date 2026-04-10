@@ -75,7 +75,9 @@ header h1{font-size:15px;font-weight:600;letter-spacing:-0.3px}
 <div class="workspace">
   <aside class="panel-form">
     <div class="brand-logo-fixed">
-      <img id="brandLogoThumb" src="" alt="Brand Logo"/>
+      <a id="brandLogoLink" href="#" target="_blank" style="display:block;flex-shrink:0;border:none;">
+        <img id="brandLogoThumb" src="" alt="Brand Logo" style="width:52px;height:52px;object-fit:contain;border-radius:4px;display:block;"/>
+      </a>
       <div class="brand-logo-info">
         <div class="brand-name-label" id="brandNameLabel">UCLIX</div>
         <div class="brand-url-label" id="brandUrlLabel"></div>
@@ -159,6 +161,7 @@ document.querySelectorAll('.brand-tab').forEach(function(tab) {
 function updateBrandUI() {
   var b = BRANDS[currentBrand];
   document.getElementById('brandLogoThumb').src = LOGOS[currentBrand];
+  document.getElementById('brandLogoLink').href = b.websiteUrl;
   document.getElementById('brandNameLabel').textContent = b.displayName;
   document.getElementById('brandUrlLabel').textContent = b.websiteUrl.replace(/https?:\/\//, '').replace(/\/$/, '');
   document.getElementById('fixedAddress').textContent = b.address;
