@@ -275,13 +275,13 @@ function buildSignatureHTML(){
   rows += '<tr><td style="padding:0 0 2px 0;font-size:10pt;font-family:Arial,sans-serif;color:#555;">' + esc(b.address) + '</td></tr>';
   rows += '<tr><td style="padding:0;font-size:10pt;font-family:Arial,sans-serif;"><a href="' + esc(b.websiteUrl) + '" style="color:#1a1a1a;text-decoration:underline;font-weight:bold;">' + esc(b.websiteText) + '</a></td></tr>';
 
-  return '<table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;width:480px;">'
+  return '<table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;width:100%;">'
     + '<tr><td colspan="2" style="padding:0 0 10px 0;">'
     + '<table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;width:100%;">'
     + '<tr><td style="font-size:0;line-height:0;border-top:0.5px solid #000000;">&nbsp;</td></tr>'
     + '</table></td></tr>'
     + '<tr>'
-    + '<td style="vertical-align:top;padding-right:14px;">'
+    + '<td style="vertical-align:top;padding-right:14px;width:91px;">'
     + '<a href="' + esc(b.websiteUrl) + '" style="display:block;border:none;text-decoration:none;">'
     + '<img src="' + logo + '" width="77" height="77" alt="' + esc(b.displayName) + '" style="display:block;border:none;"/>'
     + '</a></td>'
