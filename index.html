@@ -215,7 +215,7 @@ function setAddrLang(lang) {
   document.getElementById('btnAddrEn').style.color      = lang === 'en' ? '#fff' : '#999';
   document.getElementById('btnAddrKo').style.background = lang === 'ko' ? '#1a1a1a' : '#fff';
   document.getElementById('btnAddrKo').style.color      = lang === 'ko' ? '#fff' : '#999';
-  updateBrandUI();
+  document.getElementById('fixedAddress').innerHTML = getAddress(BRANDS[currentBrand]);
   updateSignature();
 }
 
@@ -288,15 +288,15 @@ function buildSignatureHTML(){
   if(fullName)
     rows += '<tr><td style="padding:0 0 4px 0;font-size:11pt;font-family:Arial,sans-serif;color:#1a1a1a;white-space:nowrap;">' + nameLine + '</td></tr>';
   if(dept1||dept2)
-    rows += '<tr><td style="padding:0 0 2px 0;font-size:9pt;font-family:Arial,sans-serif;color:#1a1a1a;font-weight:bold;">' + sepLine(dept1,dept2) + '</td></tr>';
+    rows += '<tr><td style="padding:0 0 2px 0;font-size:9pt;font-family:Arial,sans-serif;color:#1a1a1a;font-weight:bold;white-space:nowrap;">' + sepLine(dept1,dept2) + '</td></tr>';
   var phoneParts = [phone1, phone2].filter(Boolean).join(' · ');
   var contactLine = [phoneParts, email].filter(Boolean).join(' <span style="color:#808080;">|</span> ');
   if(contactLine)
     rows += '<tr><td style="padding:0 0 2px 0;font-size:9pt;font-family:Arial,sans-serif;color:#1a1a1a;white-space:nowrap;font-weight:bold;">' + contactLine + '</td></tr>';
-  rows += '<tr><td style="padding:0 0 2px 0;font-size:9pt;font-family:Arial,sans-serif;"><a href="' + esc(b.websiteUrl) + '" style="color:#1a1a1a;text-decoration:none;font-weight:bold;">' + esc(b.websiteText) + '</a></td></tr>';
-  rows += '<tr><td style="padding:0 0 2px 0;font-size:7pt;font-family:Arial,sans-serif;color:#555;">' + getAddress(b) + '</td></tr>';
+  rows += '<tr><td style="padding:0 0 2px 0;font-size:9pt;font-family:Arial,sans-serif;white-space:nowrap;"><a href="' + esc(b.websiteUrl) + '" style="color:#1a1a1a;text-decoration:none;font-weight:bold;">' + esc(b.websiteText) + '</a></td></tr>';
+  rows += '<tr><td style="padding:0 0 2px 0;font-size:7pt;font-family:Arial,sans-serif;color:#555;white-space:nowrap;">' + getAddress(b) + '</td></tr>';
 
-  return '<table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;width:100%;">'
+  return '<table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;width:100%;min-width:500px;">'
     + '<tr><td colspan="2" style="padding:0 0 10px 0;">'
     + '<table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;width:100%;">'
     + '<tr><td style="font-size:0;line-height:0;border-top:0.5px solid #000000;">&nbsp;</td></tr>'
@@ -306,8 +306,8 @@ function buildSignatureHTML(){
     + '<a href="' + esc(b.websiteUrl) + '" style="display:block;border:none;text-decoration:none;">'
     + '<img src="' + logo + '" width="94" height="94" alt="' + esc(b.displayName) + '" style="display:block;border:none;width:94px;height:94px;"/>'
     + '</a></td>'
-    + '<td style="vertical-align:top;">'
-    + '<table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">'
+    + '<td style="vertical-align:top;width:100%;">'
+    + '<table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;width:100%;">'
     + rows
     + '</table></td></tr></table>';
 }
